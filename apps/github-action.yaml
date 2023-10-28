@@ -16,42 +16,7 @@ spec:
         releaseName: github-action
         values: |
           syncPeriod: 1m
-          authSecret:
-            create: true
-            github_app_id: "413193"
-            github_app_installation_id: "43252425"
-            github_app_private_key: |
-              -----BEGIN RSA PRIVATE KEY-----
-              MIIEowIBAAKCAQEA5jTs7rHdA5OIf+bNmS1A9mx0hcN5WU5PNvj9+Jjng2PWUeAh
-              ybpQiFXpcOXKEEbJa7l+x+6eGhfwB+jk7ocipuyIX5tlp/bN9p0eBnmX8CT5mU6e
-              HviZRCocU6oP55zHDGe3jXI9Z5Yn4rLPbbkQ5/rsU9OR8Q1WPaGGHiIUaqS30+36
-              Tgn4Rue+6e3zRku3SNVkN8cixStsLlxmwpUDqrxdHcwGC9ojFqTZL+JR8Wc7z7o9
-              KDny5saxcSU393yCJjC+37A3Kn7tkC7JpqIxG3SYQFS1AykQZXxJE/Kl8IHRQGk/
-              cI6wPrLH1LaJyG2ZKdJeleeScDjgktZGyYDfoQIDAQABAoIBAQDcJ1NLdvfJmscY
-              ok6PJdMRl2jcH7Omb5icFwUzQG9vnQPyqylE9ZRcveSRHoDejgPErNINPCshAzF/
-              Lv/5CW1fO6ez3zYZqpMQPPPg91oRxBqbva7EKbTRloAelu2875cASxQkBlOpA9XD
-              HIP5B9qeL77g792LLNkD+bv8h1UFIg9IRoHx26AXhfRMj523s7kFqmEUu3IUKkIG
-              XlZQDGzaWngbMs0knTM2xtRc3opUbcBuyVVSzHIVR+8kiREE7JqREpCfZbriQVBp
-              CDXf1JR8TD+dwH5n3PmVo+3vQnFoPFMVRZNa027ZhemfMqKLLQXxLXB4/nZ2qZ1S
-              1Lc3LAp9AoGBAPqSXicpFUhu4oyDa1+/i/ACjocTQ7CnxhiCyKwscvROBpWtmXNg
-              1yfz+s/TjoZV9FiH8BvAaXO+Ds1NFRLqCOZE597UJADRF3VrKGRHcx1Fmz8X6nmi
-              mmk2e9OR02DLMjToVfigH4I/WOujrBGqgTjSF4koQIPMFGYCY1taEp/jAoGBAOsx
-              ndV8xpKHP3SqkUFLbV6Qrfi0bk8VR0WXnlAxu0GLxnI/df7TV1o5YNczCXBrYqkQ
-              ph/m4MMNxK+2rXe0Jv8wd6xa6Mmr28Mk2uAWmGNzwEs95CKVGXkpClIlv4qjQnP6
-              WzxjhTFVsQUgaV3ueH0WyrhR6RUQ0OmpnR36ZhGrAoGAVFP+K9+/sejfhbqU4Fxu
-              lA/IN91b4pAUMxuQvaEX7vBzdtw90H6+6ktKFbd1N/Clk0XsoOpYkwNbp+xRM1Rg
-              Ol7mSi/LDhtQccvmhBknvKo4XTuHRfhbTx1u/v0Mzn6UHwoyJMJ+2C7JlkQ3HJrt
-              cloCYb6SN8ju9IXJOm1N51ECgYBdmsKpa96QBLnxkcz7wqxFnalPuWfJm7tg7CX6
-              3sAbJykU4ULx52T1qK5tF4fjMSn0BYdIXRgJKVqlYDwLzyxSFhUbCJdrZDWzpeBi
-              nTuLIU9f4sMALH0V5oqQBSwFXlKdW/+hui4RY3xvgOXOl5Fmn4KQ9zCfzLCIvpOk
-              kbq7vwKBgFkWa9hkYDCprgeJkRBajGPk477LMsz0E2tOGphxU05rFDY6a2dWU/nT
-              fwCOrNS/qtFOPcaF6R3o543wqrEyXJCbap/LmCKgaOxzLVLne00zQ7Zh2P66dDbd
-              V7sA9a30namww3URwvoWdHV0idzOs81PLEtdnzEqkCuR3SoCbSxa
-              -----END RSA PRIVATE KEY-----
-
-
-
-         
+                   
   destination:
     server: https://kubernetes.default.svc
     namespace: github-action
