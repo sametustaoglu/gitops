@@ -17,7 +17,7 @@ spec:
           controller:
             hostNetwork: true
             extraArgs:
-              enable-ssl-passthrough
+              enable-ssl-passthrough:
             kind: DaemonSet
             service:
               enabled: true
