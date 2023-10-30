@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: git@github.com:sametustaoglu/gitops.git
     targetRevision: main
-    path: mongodb-manifests/
+    path: mongodb-manifestss/
     directory:
       recurse: true
   destination:
