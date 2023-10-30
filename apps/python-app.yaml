@@ -34,6 +34,12 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+        env:
+        - name: MONGODB_CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-creds
+              key: connection-url
       
         
         
