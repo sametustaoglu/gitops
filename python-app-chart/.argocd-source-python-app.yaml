@@ -4,5 +4,5 @@ helm:
     value: sametustaoglu/python-app
     forcestring: true
   - name: image.tag
-    value: 29b882ca400eb8158c59100f70f538dd96298cd1
+    value: 9374fc9ec779d702706b74421a96fb2a511a71ad
     forcestring: true
