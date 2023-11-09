@@ -10,7 +10,7 @@ spec:
   sources:
     - repoURL: https://helm.elastic.co
       targetRevision: 8.5.1
-      chart: elastic/logstash
+      chart: logstash 
       helm:
         releaseName: logstash
         values: |
