@@ -1,0 +1,34 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: elk-logstash
+  namespace: argocd
+
+spec:
+  project: default
+  sources:
+    - repoURL: https://helm.elastic.co
+      targetRevision: 8.5.1
+      chart: elastic 
+      helm:
+        releaseName: elastic
+        values: |
+          replicas: 1
+
+          
+                              
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: logging
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - Validate=true
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true 
+      - ServerSideApply=true
