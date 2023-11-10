@@ -14,8 +14,8 @@ spec:
       helm:
         releaseName: elasticsearch
         values: |
-          replicas: 1
-          clusterHealthCheckParams: "wait_for_status=green&timeout=1s"
+          replicas: 2
+          clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
 
           
                               
