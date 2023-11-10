@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: elk-elastic
+  name: elk-elasticsearch
   namespace: argocd
 
 spec:
@@ -10,9 +10,9 @@ spec:
   sources:
     - repoURL: https://helm.elastic.co
       targetRevision: 8.5.1
-      chart: elastic 
+      chart: elasticsearch 
       helm:
-        releaseName: elastic
+        releaseName: elasticsearch
         values: |
           replicas: 1
 
