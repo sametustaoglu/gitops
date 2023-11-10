@@ -15,7 +15,18 @@ spec:
         releaseName: elasticsearch
         values: |
           replicas: 1
+          minimumMasterNodes: 1
+
+          esJavaOpts: "-Xmx4096m -Xms4096m"
+
           clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
+
+          resources:
+            limits:
+              memory: 6144Mi
+            requests:
+              cpu: 500m
+              memory: 1024Mi
 
           
                               
@@ -23,7 +34,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: logging
   syncPolicy:
-    automated: null
+    automated: 
     #   prune: true
     #   selfHeal: false
     #   allowEmpty: false
