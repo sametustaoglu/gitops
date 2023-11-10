@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: elk-logstash
+  name: elk-elastic
   namespace: argocd
 
 spec:
