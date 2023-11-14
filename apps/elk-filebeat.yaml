@@ -16,8 +16,35 @@ spec:
         values: |
           filebeatConfig:
             filebeat.yml: |
+              filebeat.config:
+                modules:
+                  path: ${path.config}/modules.d/*.yml
+                  # Reload module configs as they change:
+                  reload.enabled: false
+
+              filebeat.inputs:
+                ignore_older: 10m
+
+              filebeat.autodiscover:
+                providers:
+                  - type: kubernetes
+                    templates:
+                      - condition.and:
+                          - equals.kubernetes.labels.family: python-app 
+                          - equals.kubernetes.container.name: python-app-chart
+                        config:
+                          - type: container
+                            paths:
+                              - /var/log/containers/*-${data.kubernetes.container.id}.log
+                            containers.ids:
+                              - "${data.kubernetes.container.id}"
+                            multiline.pattern: '^\s'
+                            multiline.negate: false
+                            multiline.match: after
+
               output.logstash:
-                 hosts: ['logstash-logstash:5044']
+                hosts: ['logstash-logstash:5044']
+
 
           
                               
@@ -25,13 +52,12 @@ spec:
     server: https://kubernetes.default.svc
     namespace: logging
   syncPolicy:
-    automated: null
-    #   prune: true
-    #   selfHeal: false
-    #   allowEmpty: false
-    # syncOptions:
-    #   - Validate=true
-    #   - CreateNamespace=true
-    #   - PrunePropagationPolicy=foreground
-    #   - PruneLast=true 
-    #   - ServerSideApply=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - Validate=true
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true

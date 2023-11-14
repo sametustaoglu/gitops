@@ -14,19 +14,57 @@ spec:
       helm:
         releaseName: logstash
         values: |
-          
+          replicas: 1
+
+          logstashConfig:
+            logstash.yml: |
+              http.host: "0.0.0.0"
+              xpack.monitoring.elasticsearch.hosts: ["http://elasticsearch-master:9200"]
+
+          logstashPipeline:
+            logstash.conf: |
+              input {
+                beats {
+                  port => 5044
+                }
+              }
+
+              output {
+                stdout { codec => rubydebug } 
+
+                
+              }
+
+          logstashJavaOpts: "-Xmx1g -Xms1g"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1536Mi"
+          service:
+            type: ClusterIP
+            ports:
+              - name: beats
+                port: 5044
+                protocol: TCP
+                targetPort: 5044
+              - name: http
+                port: 8080
+                protocol: TCP
+                targetPort: 8080
                               
   destination:
     server: https://kubernetes.default.svc
     namespace: logging
   syncPolicy:
-    automated: null
-    #   prune: true
-    #   selfHeal: false
-    #   allowEmpty: false
-    # syncOptions:
-    #   - Validate=true
-    #   - CreateNamespace=true
-    #   - PrunePropagationPolicy=foreground
-    #   - PruneLast=true 
-    #   - ServerSideApply=true
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - Validate=true
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
