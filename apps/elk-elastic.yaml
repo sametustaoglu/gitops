@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     - repoURL: https://helm.elastic.co
-      targetRevision: 7.10.0
+      targetRevision: 7.10.2
       chart: elasticsearch 
       helm:
         releaseName: elasticsearch
