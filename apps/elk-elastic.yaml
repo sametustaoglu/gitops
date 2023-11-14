@@ -16,10 +16,9 @@ spec:
         values: |
           replicas: 1
           minimumMasterNodes: 1
+          clusterHealthCheckParams: 'wait_for_status=yellow&timeout=1s'
 
           esJavaOpts: "-Xmx4096m -Xms4096m"
-
-          clusterHealthCheckParams: "wait_for_status=yellow&timeout=1s"
 
           resources:
             limits:
