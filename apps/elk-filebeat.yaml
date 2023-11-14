@@ -51,13 +51,13 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: logging
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-    syncOptions:
-      - Validate=true
-      - CreateNamespace=true
-      - PrunePropagationPolicy=foreground
-      - PruneLast=true
+  # syncPolicy:
+  #   automated:
+  #     prune: true
+  #     selfHeal: true
+  #     allowEmpty: false
+  #   syncOptions:
+  #     - Validate=true
+  #     - CreateNamespace=true
+  #     - PrunePropagationPolicy=foreground
+  #     - PruneLast=true
