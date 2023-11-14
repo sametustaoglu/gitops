@@ -9,7 +9,7 @@ spec:
   project: default
   sources:
     - repoURL: https://helm.elastic.co
-      targetRevision: 7.10.2
+      targetRevision: 8.5.1
       chart: kibana 
       helm:
         releaseName: kibana
