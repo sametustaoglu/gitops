@@ -25,7 +25,7 @@ spec:
                 https: 30443         
          
   destination:
-    server: https://54.75.51.127:6443
+    server: https://kubernetes.default.svc
     namespace: ingress-nginx
   syncPolicy:
     automated:
