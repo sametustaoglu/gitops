@@ -1,0 +1,54 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: python-app
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: myimage=sametustaoglu/python-app
+    argocd-image-updater.argoproj.io/myimage.update-strategy: latest
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/github-secret
+    argocd-image-updater.argoproj.io/myimage.pull-secret: pullsecret:argocd/dockerhub-secret
+    argocd-image-updater.argoproj.io/git-branch: main
+
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:sametustaoglu/gitops.git
+    targetRevision: main
+    path: python-app-chart
+    helm:
+      values: |
+        replicaCount: 2
+        image:
+          repository: sametustaoglu/python-app
+          tag: 2c6ea829178e6fc5279fdb8dfaa57c4c8612fbeb
+        service:
+          targetPort: "5000"
+        containerPort: "5000"
+        ingress:  
+          enabled: true
+          hosts:
+          - host: app.example.local
+            paths:
+              - path: /
+                pathType: Prefix
+      
+        
+        
+     
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - Validate=true
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
